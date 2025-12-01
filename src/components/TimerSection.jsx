@@ -77,7 +77,7 @@ function TimerSection() {
         <div className="flex gap-2 mb-4">
           <button
             onClick={() => setIsRunning((prev) => !prev)}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded flex items-center gap-2 transition-colors text-sm"
+            className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded flex items-center gap-2 transition-colors text-sm"
           >
             {isRunning ? (
               <>

@@ -10,10 +10,12 @@ import RssFeedModal from './components/RssFeedModal';
 import RssManageModal from './components/RssManageModal';
 import ConfirmModal from './components/ConfirmModal';
 import { useTheme } from './hooks/useTheme';
+import { useColorTheme } from './hooks/useColorTheme';
 import { useDatabase } from './hooks/useDatabase';
 
 function App() {
-  const { theme, isDark, cycleTheme } = useTheme();
+  const {theme, isDark, cycleTheme} = useTheme();
+  const {colorTheme, toggleColorTheme } = useColorTheme();
   const [showRssModal, setShowRssModal] = useState(false);
   const [showRssManageModal, setShowRssManageModal] = useState(false);
   const [showNoteModal, setShowNoteModal] = useState(false);
@@ -232,6 +234,8 @@ function App() {
         <Navbar
           theme={theme}
           onThemeChange={cycleTheme}
+          colorTheme={colorTheme}
+          toggleColorTheme={toggleColorTheme}
           onRssClick={() => setShowRssModal(true)}
           onExport={handleExport}
           onImport={handleImport}

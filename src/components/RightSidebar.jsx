@@ -33,7 +33,7 @@ function RightSidebar({ rssItems, onToggleReadLater, onManageFeeds }) {
             onClick={() => setView('all')}
             className={`flex-1 px-3 py-2 rounded transition-colors text-sm ${
               view === 'all'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-primary text-white'
                 : 'hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
@@ -43,7 +43,7 @@ function RightSidebar({ rssItems, onToggleReadLater, onManageFeeds }) {
             onClick={() => setView('saved')}
             className={`flex-1 px-3 py-2 rounded transition-colors text-sm ${
               view === 'saved'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-primary text-white'
                 : 'hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
@@ -68,7 +68,7 @@ function RightSidebar({ rssItems, onToggleReadLater, onManageFeeds }) {
                   onClick={() => openLink(item.link)}
                   className="flex-1 min-w-0 text-left"
                 >
-                  <div className="font-medium text-sm mb-1 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  <div className="font-medium text-sm mb-1 line-clamp-2 hover:text-primary dark:hover:text-primary transition-colors">
                     {item.title}
                   </div>
                 </button>
@@ -84,7 +84,7 @@ function RightSidebar({ rssItems, onToggleReadLater, onManageFeeds }) {
                     onClick={() => onToggleReadLater(item.id, !item.read_later)}
                     className={`p-1 rounded transition-colors ${
                       item.read_later
-                        ? 'text-blue-600'
+                        ? 'text-primary'
                         : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'
                     }`}
                     title={item.read_later ? 'Remove from saved' : 'Save for later'}

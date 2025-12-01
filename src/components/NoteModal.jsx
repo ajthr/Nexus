@@ -55,7 +55,7 @@ function NoteModal({ show, onClose, onSave, editNote = null }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Note title"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               autoFocus
             />
           </div>
@@ -90,14 +90,14 @@ function NoteModal({ show, onClose, onSave, editNote = null }) {
               onChange={(e) => setContent(e.target.value)}
               placeholder="Note content..."
               rows="8"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
             />
           </div>
 
           <div className="flex gap-2">
             <button
               onClick={handleSave}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
+              className="flex-1 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded transition-colors"
             >
               {editNote ? 'Update Note' : 'Save Note'}
             </button>

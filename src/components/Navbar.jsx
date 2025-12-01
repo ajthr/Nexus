@@ -1,7 +1,7 @@
 import React from 'react';
 import { Rss, Download, Upload, Sun, Moon, Monitor } from 'lucide-react';
 
-function Navbar({ theme, onThemeChange, onRssClick, onExport, onImport }) {
+function Navbar({ theme, onThemeChange, colorTheme, toggleColorTheme, onRssClick, onExport, onImport }) {
   const getThemeIcon = () => {
     switch (theme) {
       case 'light':
@@ -13,10 +13,29 @@ function Navbar({ theme, onThemeChange, onRssClick, onExport, onImport }) {
     }
   };
 
+  const getColorThemeIcon = () => {
+    switch (colorTheme) {
+      case 'blue':
+        return '🔵';
+      case 'tomato':
+        return '🍅';
+      case 'orange':
+        return '🟠';
+      case 'lightblue':
+        return '💧';
+      default:
+        return '🎨';
+    }
+  };
+
+  const getThemeLabel = () => {
+    return colorTheme.charAt(0).toUpperCase() + colorTheme.slice(1);
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between">
-      <h1 className="text-xl font-bold text-blue-600">Nexus</h1>
-      
+      <h1 className="text-xl font-bold text-primary">Nexus</h1>
+
       <div className="flex items-center gap-2">
         <button
           onClick={onThemeChange}
@@ -25,7 +44,16 @@ function Navbar({ theme, onThemeChange, onRssClick, onExport, onImport }) {
         >
           {getThemeIcon()}
         </button>
-        
+
+        <button
+          className="hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded transition-colors"
+          onClick={toggleColorTheme}
+          title={`Color Theme: ${getThemeLabel()}`}
+          aria-label={`Switch color theme. Current: ${getThemeLabel()}`}
+        >
+          <span className="theme-icon">{getColorThemeIcon()}</span>
+        </button>
+
         <button
           onClick={onRssClick}
           className="hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded transition-colors"
@@ -33,7 +61,7 @@ function Navbar({ theme, onThemeChange, onRssClick, onExport, onImport }) {
         >
           <Rss size={18} />
         </button>
-        
+
         <button
           onClick={onExport}
           className="hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded transition-colors"
@@ -41,7 +69,7 @@ function Navbar({ theme, onThemeChange, onRssClick, onExport, onImport }) {
         >
           <Download size={18} />
         </button>
-        
+
         <button
           onClick={onImport}
           className="hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded transition-colors"

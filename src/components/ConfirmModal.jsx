@@ -25,7 +25,7 @@ function ConfirmModal({
   const buttonColor =
     type === 'danger'
       ? 'bg-red-600 hover:bg-red-700'
-      : 'bg-blue-600 hover:bg-blue-700';
+      : 'bg-primary hover:bg-primary-hover';
 
   return (
     <Modal show={show} onClose={onClose} title={title}>

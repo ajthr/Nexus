@@ -57,7 +57,7 @@ function SnippetModal({ show, onClose, onSave }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter snippet title"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               autoFocus
             />
           </div>
@@ -67,7 +67,7 @@ function SnippetModal({ show, onClose, onSave }) {
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
             >
               {languages.map((lang) => (
                 <option key={lang} value={lang}>
@@ -84,7 +84,7 @@ function SnippetModal({ show, onClose, onSave }) {
               onChange={(e) => setContent(e.target.value)}
               placeholder="Paste your code here..."
               rows="12"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-sm"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary resize-none font-mono text-sm"
               spellCheck="false"
             />
           </div>
@@ -92,7 +92,7 @@ function SnippetModal({ show, onClose, onSave }) {
           <div className="flex gap-2">
             <button
               onClick={handleSave}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
+              className="flex-1 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded transition-colors"
             >
               Save Snippet
             </button>

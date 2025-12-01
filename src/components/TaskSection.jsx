@@ -46,7 +46,7 @@ function TaskSection({ tasks, onTaskToggle, onTaskEdit, onTaskDelete }) {
                   <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => onTaskEdit(task)}
-                      className="p-1 hover:bg-blue-100 dark:hover:bg-blue-900 text-blue-600 dark:text-blue-400 rounded transition-all"
+                      className="p-1 hover:bg-blue-100 dark:hover:bg-primary-hover text-primary dark:text-primary rounded transition-all"
                       title="Edit task"
                     >
                       <Edit size={14} />

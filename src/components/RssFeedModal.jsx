@@ -43,7 +43,7 @@ function RssFeedModal({ show, onClose, onAdd }) {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://example.com/feed.xml"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
               autoFocus
               onKeyPress={(e) => {
                 if (e.key === 'Enter') handleAdd();
@@ -58,7 +58,7 @@ function RssFeedModal({ show, onClose, onAdd }) {
             <button
               onClick={handleAdd}
               disabled={loading}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Adding...' : 'Add Feed'}
             </button>

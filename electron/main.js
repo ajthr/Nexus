@@ -97,7 +97,11 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:5173');
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(join(__dirname, '../dist/index.html'));
+    // FIX: Changed '../dist/index.html' to 'dist/index.html'. 
+    // In ASAR, __dirname is the archive root, so we look directly into the 'dist' folder inside it.
+    mainWindow.loadFile(join(__dirname, 'dist', 'index.html')).catch(err => {
+      console.error("Failed to load production index.html:", err);
+    });
   }
 
   // Set CSP for development

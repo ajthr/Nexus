@@ -2,6 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* Blue theme (default) - RGB values for Tailwind */
+    --color-primary: 59 130 246;
+    --color-primary-hover: 37 99 235;
+    --color-primary-light: 219 234 254;
+    --color-primary-dark: 30 64 175;
+  }
+
+  /* Tomato Theme */
+  [data-color-theme="tomato"] {
+    --color-primary: 239 68 68;
+    --color-primary-hover: 220 38 38;
+    --color-primary-light: 254 226 226;
+    --color-primary-dark: 153 27 27;
+  }
+
+  /* Orange Theme */
+  [data-color-theme="orange"] {
+    --color-primary: 249 115 22;
+    --color-primary-hover: 234 88 12;
+    --color-primary-light: 255 237 213;
+    --color-primary-dark: 154 52 18;
+  }
+
+  /* Light Blue Theme */
+  [data-color-theme="lightblue"] {
+    --color-primary: 14 165 233;
+    --color-primary-hover: 2 132 199;
+    --color-primary-light: 224 242 254;
+    --color-primary-dark: 7 89 133;
+  }
+
+  /* Dark mode adjustments */
+  .dark[data-color-theme="blue"] {
+    --color-primary-light: 30 58 138;
+  }
+
+  .dark[data-color-theme="tomato"] {
+    --color-primary-light: 127 29 29;
+  }
+
+  .dark[data-color-theme="orange"] {
+    --color-primary-light: 124 45 18;
+  }
+
+  .dark[data-color-theme="lightblue"] {
+    --color-primary-light: 12 74 110;
+  }
+}
+
+@layer utilities {
+  .shadow-primary {
+    box-shadow: 0 4px 6px -1px rgb(var(--color-primary) / 0.1);
+  }
+  
+  .glow-primary {
+    box-shadow: 0 0 20px rgb(var(--color-primary) / 0.5);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

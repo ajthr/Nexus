@@ -10,13 +10,13 @@ function SnippetSection({ snippets, onSnippetDelete }) {
   const getLanguageColor = (language) => {
     const colors = {
       javascript: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-      python: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      python: 'bg-blue-100 text-primary dark:bg-blue-900 dark:text-blue-200',
       css: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',
       html: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
       java: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
       go: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200',
       rust: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-      typescript: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      typescript: 'bg-blue-100 text-primary dark:bg-blue-900 dark:text-blue-200',
     };
     return colors[language?.toLowerCase()] || 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
   };
