@@ -91,6 +91,8 @@ function createWindow() {
     },
   });
 
+  mainWindow.setMenuBarVisibility(false)
+
   const isDev = process.env.NODE_ENV === 'development';
   
   if (isDev) {
