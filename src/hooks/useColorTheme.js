@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-const COLOR_THEMES = ['blue', 'tomato', 'orange', 'lightblue'];
+const COLOR_THEMES = ['amethyst', 'sky', 'emerald', 'ruby', 'violet', 'lime', 'fuchsia'];
 const STORAGE_KEY = 'nexus-color-theme';
 
 export const useColorTheme = () => {
   const [colorTheme, setColorTheme] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved || 'blue';
+    return saved || 'amethyst';
   });
 
   useEffect(() => {

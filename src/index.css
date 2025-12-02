@@ -3,53 +3,105 @@
 @tailwind utilities;
 
 @layer base {
+
+  /* 1. DEFAULT THEME */
   :root {
-    /* Blue theme (default) - RGB values for Tailwind */
-    --color-primary: 59 130 246;
-    --color-primary-hover: 37 99 235;
-    --color-primary-light: 219 234 254;
-    --color-primary-dark: 30 64 175;
+    /* Set the default theme to Amethyst's primary colors */
+    --color-primary: 166 149 255;
+    --color-primary-hover: 141 124 230;
+    --color-primary-light: 231 227 255;
+    --color-primary-dark: 88 78 156;
   }
 
-  /* Tomato Theme */
-  [data-color-theme="tomato"] {
-    --color-primary: 239 68 68;
-    --color-primary-hover: 220 38 38;
-    --color-primary-light: 254 226 226;
-    --color-primary-dark: 153 27 27;
+  /* 2. AMETHYST THEME */
+  [data-color-theme="amethyst"] {
+    --color-primary: 166 149 255;
+    --color-primary-hover: 141 124 230;
+    --color-primary-light: 231 227 255;
+    --color-primary-dark: 88 78 156;
   }
 
-  /* Orange Theme */
-  [data-color-theme="orange"] {
-    --color-primary: 249 115 22;
-    --color-primary-hover: 234 88 12;
-    --color-primary-light: 255 237 213;
-    --color-primary-dark: 154 52 18;
-  }
-
-  /* Light Blue Theme */
-  [data-color-theme="lightblue"] {
+  /* 3. SKY THEME */
+  [data-color-theme="sky"] {
     --color-primary: 14 165 233;
-    --color-primary-hover: 2 132 199;
-    --color-primary-light: 224 242 254;
-    --color-primary-dark: 7 89 133;
+    --color-primary-hover: 12 140 198;
+    --color-primary-light: 202 235 255;
+    --color-primary-dark: 0 82 120;
   }
 
-  /* Dark mode adjustments */
-  .dark[data-color-theme="blue"] {
-    --color-primary-light: 30 58 138;
+  /* 4. EMERALD THEME */
+  [data-color-theme="emerald"] {
+    --color-primary: 16 185 129;
+    --color-primary-hover: 13 157 110;
+    --color-primary-light: 203 240 228;
+    --color-primary-dark: 1 95 62;
   }
 
-  .dark[data-color-theme="tomato"] {
-    --color-primary-light: 127 29 29;
+  /* 5. RUBY THEME */
+  [data-color-theme="ruby"] {
+    --color-primary: 220 38 38;
+    --color-primary-hover: 187 32 32;
+    --color-primary-light: 255 206 206;
+    --color-primary-dark: 124 10 10;
   }
 
-  .dark[data-color-theme="orange"] {
-    --color-primary-light: 124 45 18;
+  /* 6. VIOLET THEME */
+  [data-color-theme="violet"] {
+    --color-primary: 139 92 246;
+    --color-primary-hover: 118 78 209;
+    --color-primary-light: 229 219 255;
+    --color-primary-dark: 69 36 139;
   }
 
-  .dark[data-color-theme="lightblue"] {
+  /* 7. LIME THEME */
+  [data-color-theme="lime"] {
+    --color-primary: 101 163 13;
+    --color-primary-hover: 86 139 11;
+    --color-primary-light: 230 240 194;
+    --color-primary-dark: 46 82 0;
+  }
+
+  /* 8. FUCHSIA THEME */
+  [data-color-theme="fuchsia"] {
+    --color-primary: 217 70 239;
+    --color-primary-hover: 192 38 211;
+    --color-primary-light: 253 234 255;
+    --color-primary-dark: 128 32 145;
+  }
+
+  /* ------------------------------------ */
+  /* DARK MODE ADJUSTMENTS */
+  /* These set the --color-primary-light variable to a darker color 
+     when in dark mode for use as dark mode backgrounds/accents. 
+     The values are darkened versions of the primary color. */
+  /* ------------------------------------ */
+
+  .dark[data-color-theme="amethyst"] {
+    --color-primary-light: 58 49 107;
+  }
+
+  .dark[data-color-theme="sky"] {
     --color-primary-light: 12 74 110;
+  }
+
+  .dark[data-color-theme="emerald"] {
+    --color-primary-light: 1 71 50;
+  }
+
+  .dark[data-color-theme="ruby"] {
+    --color-primary-light: 110 17 17;
+  }
+
+  .dark[data-color-theme="violet"] {
+    --color-primary-light: 44 26 84;
+  }
+
+  .dark[data-color-theme="lime"] {
+    --color-primary-light: 35 57 1;
+  }
+
+  .dark[data-color-theme="fuchsia"] {
+    --color-primary-light: 90 27 107;
   }
 }
 
@@ -57,10 +109,15 @@
   .shadow-primary {
     box-shadow: 0 4px 6px -1px rgb(var(--color-primary) / 0.1);
   }
-  
+
   .glow-primary {
     box-shadow: 0 0 20px rgb(var(--color-primary) / 0.5);
   }
+}
+
+@font-face {
+  font-family: 'Changa One';
+  src: url('./fonts/Changa-One.ttf') format('truetype');
 }
 
 * {
@@ -80,6 +137,12 @@ body {
 
 code {
   font-family: 'Courier New', Courier, monospace;
+}
+
+.logo {
+  font-family: 'Changa One', sans-serif;
+  font-size: 2rem;
+  user-select: none;
 }
 
 /* Custom Scrollbar */
@@ -124,6 +187,7 @@ code {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

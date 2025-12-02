@@ -1,12 +1,20 @@
-import React from 'react';
-import { Rss, Download, Upload, Sun, Moon, Monitor } from 'lucide-react';
+import React from "react";
+import { Rss, Download, Upload, Sun, Moon, Monitor } from "lucide-react";
 
-function Navbar({ theme, onThemeChange, colorTheme, toggleColorTheme, onRssClick, onExport, onImport }) {
+function Navbar({
+  theme,
+  onThemeChange,
+  colorTheme,
+  toggleColorTheme,
+  onRssClick,
+  onExport,
+  onImport,
+}) {
   const getThemeIcon = () => {
     switch (theme) {
-      case 'light':
+      case "light":
         return <Sun size={18} />;
-      case 'dark':
+      case "dark":
         return <Moon size={18} />;
       default:
         return <Monitor size={18} />;
@@ -14,18 +22,27 @@ function Navbar({ theme, onThemeChange, colorTheme, toggleColorTheme, onRssClick
   };
 
   const getColorThemeIcon = () => {
-    switch (colorTheme) {
-      case 'blue':
-        return '🔵';
-      case 'tomato':
-        return '🍅';
-      case 'orange':
-        return '🟠';
-      case 'lightblue':
-        return '💧';
-      default:
-        return '🎨';
-    }
+    const size = 16;
+
+    const themeColorMap = {
+      'amethyst': '166 149 255', // default
+      'sky': '14 165 233',
+      'emerald': '16 185 129',
+      'ruby': '220 38 38',
+      'violet': '139 92 246',
+      'lime': '101 163 13',
+      'fuchsia': '217 70 239',
+    };
+
+    const defaultColorRgb = '166 149 255';
+
+    // Determine the color string. Fall back to the default if the theme is not found.
+    const colorRgbString = themeColorMap[colorTheme] ? themeColorMap[colorTheme] : defaultColorRgb;
+    const color = `rgb(${colorRgbString})`;
+
+    return <svg width={size} height={size} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx={size / 2} cy={size / 2} r={size / 2} fill={color} />
+    </svg>;
   };
 
   const getThemeLabel = () => {
@@ -34,7 +51,7 @@ function Navbar({ theme, onThemeChange, colorTheme, toggleColorTheme, onRssClick
 
   return (
     <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between">
-      <h1 className="text-xl font-bold text-primary">Nexus</h1>
+      <h1 className="logo font-semibold text-primary tracking-wide">Nexus</h1>
 
       <div className="flex items-center gap-2">
         <button

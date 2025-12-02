@@ -14,7 +14,7 @@ function NoteSection({ notes, onNoteEdit, onNoteDelete }) {
           {notes.length}
         </span>
       </div>
-      
+
       <div className="overflow-y-auto flex-1">
         {notes.length === 0 ? (
           <div className="text-center text-gray-500 dark:text-gray-400 py-8">
@@ -40,7 +40,7 @@ function NoteSection({ notes, onNoteEdit, onNoteDelete }) {
                   <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => onNoteEdit(note)}
-                      className="p-1 hover:bg-blue-100 dark:hover:bg-primary-hover text-primary dark:text-primary rounded transition-all"
+                      className="p-1 hover:bg-primary/20 dark:hover:bg-primary/20 text-primary dark:text-primary rounded transition-all"
                       title="Edit note"
                     >
                       <Edit size={14} />

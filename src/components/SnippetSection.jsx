@@ -32,7 +32,7 @@ function SnippetSection({ snippets, onSnippetDelete }) {
           {snippets.length}
         </span>
       </div>
-      
+
       <div className="overflow-y-auto flex-1 space-y-2">
         {snippets.length === 0 ? (
           <div className="text-center text-gray-500 dark:text-gray-400 py-8">
@@ -54,7 +54,7 @@ function SnippetSection({ snippets, onSnippetDelete }) {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => copyToClipboard(snippet.content)}
-                    className="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-all"
+                    className="opacity-0 group-hover:opacity-100 p-1 hover:bg-primary/20 dark:hover:bg-primary/20 text-primary dark:text-primary rounded transition-all"
                     title="Copy to clipboard"
                   >
                     <Copy size={14} />
