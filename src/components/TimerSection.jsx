@@ -77,16 +77,16 @@ function TimerSection() {
         <div className="flex gap-2 mb-4">
           <button
             onClick={() => setIsRunning((prev) => !prev)}
-            className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded flex items-center gap-2 transition-colors text-sm"
+            className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded flex items-center gap-2 transition-colors text-sm font-semibold"
           >
             {isRunning ? (
               <>
-                <Pause size={14} />
+                <Pause size={14} strokeWidth={2.5} />
                 Pause
               </>
             ) : (
               <>
-                <Play size={14} />
+                <Play size={14} strokeWidth={2.5} />
                 Start
               </>
             )}
@@ -94,9 +94,9 @@ function TimerSection() {
 
           <button
             onClick={handleReset}
-            className="border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 px-5 py-2 rounded flex items-center gap-2 transition-colors text-sm"
+            className="border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 px-5 py-2 rounded flex items-center gap-2 transition-colors text-sm font-semibold"
           >
-            <RotateCcw size={14} />
+            <RotateCcw size={14} strokeWidth={2.5} />
             Reset
           </button>
         </div>

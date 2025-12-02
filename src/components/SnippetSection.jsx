@@ -9,6 +9,7 @@ function SnippetSection({ snippets, onNewSnippet, onSnippetDelete }) {
 
   const getLanguageColor = (language) => {
     const colors = {
+      plaintext: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
       javascript: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
       python: 'bg-blue-100 text-primary dark:bg-blue-900 dark:text-blue-200',
       css: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',

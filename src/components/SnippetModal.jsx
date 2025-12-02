@@ -5,10 +5,11 @@ import ConfirmModal from './ConfirmModal';
 function SnippetModal({ show, onClose, onSave }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [language, setLanguage] = useState('javascript');
+  const [language, setLanguage] = useState('plaintext');
   const [validationError, setValidationError] = useState(null);
 
   const languages = [
+    'plaintext',
     'javascript',
     'typescript',
     'python',
@@ -36,13 +37,13 @@ function SnippetModal({ show, onClose, onSave }) {
     onSave({ title, content, language });
     setTitle('');
     setContent('');
-    setLanguage('javascript');
+    setLanguage('plaintext');
   };
 
   const handleClose = () => {
     setTitle('');
     setContent('');
-    setLanguage('javascript');
+    setLanguage('plaintext');
     onClose();
   };
 
