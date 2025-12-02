@@ -11,6 +11,9 @@ function MainContent({
   gridLayout,
   onLayoutChange,
   onTaskToggle,
+  onNewTask,
+  onNewNote,
+  onNewSnippet,
   onNoteEdit,
   onTaskEdit,
   onTaskDelete,
@@ -31,7 +34,7 @@ function MainContent({
     const draggedItem = newLayout[draggingIndex];
     newLayout.splice(draggingIndex, 1);
     newLayout.splice(index, 0, draggedItem);
-    
+
     onLayoutChange(newLayout);
     setDraggingIndex(index);
   };
@@ -46,6 +49,7 @@ function MainContent({
         return (
           <NoteSection
             notes={notes}
+            onNewNote={onNewNote}
             onNoteEdit={onNoteEdit}
             onNoteDelete={onNoteDelete}
           />
@@ -54,6 +58,7 @@ function MainContent({
         return (
           <TaskSection
             tasks={tasks}
+            onNewTask={onNewTask}
             onTaskToggle={onTaskToggle}
             onTaskEdit={onTaskEdit}
             onTaskDelete={onTaskDelete}
@@ -63,6 +68,7 @@ function MainContent({
         return (
           <SnippetSection
             snippets={snippets}
+            onNewSnippet={onNewSnippet}
             onSnippetDelete={onSnippetDelete}
           />
         );

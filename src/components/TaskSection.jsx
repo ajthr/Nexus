@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckSquare, Calendar, Trash2, Edit } from 'lucide-react';
 import { format } from 'date-fns';
 
-function TaskSection({ tasks, onTaskToggle, onTaskEdit, onTaskDelete }) {
+function TaskSection({ tasks, onTaskToggle, onNewTask, onTaskEdit, onTaskDelete }) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 flex flex-col h-full">
       <div className="flex items-center justify-between mb-3 flex-shrink-0">
@@ -17,8 +17,21 @@ function TaskSection({ tasks, onTaskToggle, onTaskEdit, onTaskDelete }) {
 
       <div className="overflow-y-auto flex-1">
         {tasks.length === 0 ? (
-          <div className="text-center text-gray-500 dark:text-gray-400 py-8">
-            No tasks yet. Click the button on the left to create one.
+          <div className="flex flex-col items-center justify-center text-center h-full">
+
+            <div className="text-primary opacity-60 mb-4">
+              <CheckSquare size={45} />
+            </div>
+
+            <h4 className="text-lg font-medium text-white mb-2">Ready to get productive?</h4>
+
+            <p className="text-gray-400 max-w-md mb-6">
+              Set priorities, track your progress, and conquer your to-do list.
+            </p>
+
+            <button className="px-6 py-2 bg-primary rounded-md text-white font-semibold shadow-md hover:bg-primary-hover transition-colors" onClick={onNewTask}>
+              + Create Your First Task
+            </button>
           </div>
         ) : (
           <div className="space-y-2">

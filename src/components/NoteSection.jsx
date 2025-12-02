@@ -2,7 +2,7 @@ import React from 'react';
 import { FileText, Trash2, Edit } from 'lucide-react';
 import { format } from 'date-fns';
 
-function NoteSection({ notes, onNoteEdit, onNoteDelete }) {
+function NoteSection({ notes, onNewNote, onNoteEdit, onNoteDelete }) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 flex flex-col h-full">
       <div className="flex items-center justify-between mb-3 flex-shrink-0">
@@ -17,8 +17,17 @@ function NoteSection({ notes, onNoteEdit, onNoteDelete }) {
 
       <div className="overflow-y-auto flex-1">
         {notes.length === 0 ? (
-          <div className="text-center text-gray-500 dark:text-gray-400 py-8">
-            No notes yet. Click the button on the left to create one.
+          <div class="flex flex-col items-center justify-center text-center h-full">
+            <div class="text-primary opacity-60 mb-4">
+              <FileText size={45} />
+            </div>
+            <h4 class="text-lg font-medium text-white mb-2">Got an idea? Jot it down.</h4>
+            <p class="text-gray-400 max-w-md mb-6">
+              Use this space for project planning, quick thoughts, or saving important reference materials.
+            </p>
+            <button class="px-6 py-2 bg-primary rounded-md text-white font-semibold shadow-md hover:bg-primary-hover transition-colors" onClick={onNewNote}>
+              + Create a Note
+            </button>
           </div>
         ) : (
           <div className="space-y-2">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Code, Trash2, Copy } from 'lucide-react';
 
-function SnippetSection({ snippets, onSnippetDelete }) {
+function SnippetSection({ snippets, onNewSnippet, onSnippetDelete }) {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
     // Could add a toast notification here
@@ -35,8 +35,17 @@ function SnippetSection({ snippets, onSnippetDelete }) {
 
       <div className="overflow-y-auto flex-1 space-y-2">
         {snippets.length === 0 ? (
-          <div className="text-center text-gray-500 dark:text-gray-400 py-8">
-            No snippets yet. Click the button on the left to create one.
+          <div class="flex flex-col items-center justify-center text-center h-full">
+            <div class="text-primary opacity-60 mb-4">
+              <Code size={45} />
+            </div>
+            <h4 class="text-lg font-medium text-white mb-2">Save Time. Paste Smarter.</h4>
+            <p class="text-gray-400 max-w-md mb-6">
+              Store reusable code blocks, frequently used links, or template responses here for instant access.
+            </p>
+            <button class="px-6 py-2 bg-primary rounded-md text-white font-semibold shadow-md hover:bg-primary-hover transition-colors" onClick={onNewSnippet}>
+              + New Snippet
+            </button>
           </div>
         ) : (
           snippets.map(snippet => (
@@ -60,11 +69,7 @@ function SnippetSection({ snippets, onSnippetDelete }) {
                     <Copy size={14} />
                   </button>
                   <button
-                    onClick={() => {
-                      if (confirm('Delete this snippet?')) {
-                        onSnippetDelete(snippet.id);
-                      }
-                    }}
+                    onClick={() => onSnippetDelete(snippet.id)}
                     className="opacity-0 group-hover:opacity-100 p-1 hover:bg-red-100 dark:hover:bg-red-900 text-red-600 dark:text-red-400 rounded transition-all"
                   >
                     <Trash2 size={14} />

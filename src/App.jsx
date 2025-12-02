@@ -14,8 +14,8 @@ import { useColorTheme } from './hooks/useColorTheme';
 import { useDatabase } from './hooks/useDatabase';
 
 function App() {
-  const {theme, isDark, cycleTheme} = useTheme();
-  const {colorTheme, toggleColorTheme } = useColorTheme();
+  const { theme, isDark, cycleTheme } = useTheme();
+  const { colorTheme, toggleColorTheme } = useColorTheme();
   const [showRssModal, setShowRssModal] = useState(false);
   const [showRssManageModal, setShowRssManageModal] = useState(false);
   const [showNoteModal, setShowNoteModal] = useState(false);
@@ -267,6 +267,15 @@ function App() {
               await window.api.updateTask({ id: taskId, completed });
               refreshTasks();
             }}
+            onNewNote={() => {
+              setEditingNote(null);
+              setShowNoteModal(true);
+            }}
+            onNewTask={() => {
+              setEditingTask(null);
+              setShowTaskModal(true);
+            }}
+            onNewSnippet={() => setShowSnippetModal(true)}
             onNoteEdit={handleNoteEdit}
             onTaskEdit={handleTaskEdit}
             onTaskDelete={handleTaskDelete}
