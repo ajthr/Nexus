@@ -11,7 +11,10 @@
     "dist": "electron-builder --windows",
     "build:electron": "npm run build && electron-builder",
     "postinstall": "electron-builder install-app-deps",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "productivity",
@@ -24,25 +27,34 @@
   "author": "Ajith",
   "license": "MIT",
   "dependencies": {
+    "better-sqlite3": "^9.2.2",
+    "date-fns": "^2.30.0",
+    "electron-store": "^8.1.0",
+    "lucide-react": "^0.294.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "electron-store": "^8.1.0",
-    "better-sqlite3": "^9.2.2",
-    "rss-parser": "^3.13.0",
-    "lucide-react": "^0.294.0",
-    "date-fns": "^2.30.0"
+    "rss-parser": "^3.13.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "babel-jest": "^30.2.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "electron": "^28.0.0",
     "electron-builder": "^24.9.1",
-    "vite": "^5.0.8",
-    "@vitejs/plugin-react": "^4.2.1",
-    "tailwindcss": "^3.4.0",
-    "autoprefixer": "^10.4.16",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "postcss": "^8.4.32",
-    "concurrently": "^8.2.2",
-    "wait-on": "^7.2.0",
-    "cross-env": "^7.0.3"
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.8",
+    "wait-on": "^7.2.0"
   },
   "build": {
     "appId": "com.nexus.app",
@@ -57,13 +69,20 @@
     },
     "mac": {
       "category": "public.app-category.productivity",
-      "target": ["dmg"]
+      "target": [
+        "dmg"
+      ]
     },
     "win": {
-      "target": ["nsis"]
+      "target": [
+        "nsis"
+      ]
     },
     "linux": {
-      "target": ["AppImage", "deb"],
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "category": "Utility"
     }
   }

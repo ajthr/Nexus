@@ -1,35 +1,55 @@
 # Nexus
 
-Nexus is a lightweight productivity desktop app.
+A minimal, modern productivity desktop application built with Electron and React.
 
-### Features
-* note taking
-* task management
-* snippets
-* timer
-* RSS features
----
+## Features
 
-**Quick Start**
+- **Notes** - Quick note-taking with rich text support
+- **Tasks** - Task management with scheduling
+- **Code Snippets** - Store and organize code snippets
+- **Pomodoro Timer** - Focus timer for productivity
+- **RSS Reader** - Stay updated with your favorite feeds
 
-1. Install dependencies
+## Quick Start
 
-```cmd
+### Install dependencies
+
+```bash
 npm install
 ```
 
-2. Run development mode (Vite + Electron)
+### Run development mode
 
-```cmd
+```bash
 npm run dev
 ```
 
-3. Build for production
+This will start both Vite dev server and Electron.
 
-```cmd
+### Build for production
+
+```bash
 npm run build
 npm run build:electron
 ```
+
+## Testing
+
+This project includes a comprehensive test suite using Jest and React Testing Library.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
 ---
 
-License: MIT
+**License**: MIT

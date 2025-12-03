@@ -17,15 +17,15 @@ function NoteSection({ notes, onNewNote, onNoteEdit, onNoteDelete }) {
 
       <div className="overflow-y-auto flex-1">
         {notes.length === 0 ? (
-          <div class="flex flex-col items-center justify-center text-center h-full">
-            <div class="text-primary opacity-60 mb-4">
+          <div className="flex flex-col items-center justify-center text-center h-full">
+            <div className="text-primary opacity-60 mb-4">
               <FileText size={45} />
             </div>
-            <h4 class="text-lg font-medium text-white mb-2">Got an idea? Jot it down.</h4>
-            <p class="text-gray-400 max-w-md mb-6">
+            <h4 className="text-lg font-medium text-white mb-2">Got an idea? Jot it down.</h4>
+            <p className="text-gray-400 max-w-md mb-6">
               Use this space for project planning, quick thoughts, or saving important reference materials.
             </p>
-            <button class="px-6 py-2 bg-primary rounded-md text-white font-semibold shadow-md hover:bg-primary-hover transition-colors" onClick={onNewNote}>
+            <button className="px-6 py-2 bg-primary rounded-md text-white font-semibold shadow-md hover:bg-primary-hover transition-colors" onClick={onNewNote}>
               + Create a Note
             </button>
           </div>
