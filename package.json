@@ -78,6 +78,12 @@
         "nsis"
       ]
     },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName}Setup-${version}-${arch}.${ext}"
+    },
     "linux": {
       "target": [
         "AppImage",
