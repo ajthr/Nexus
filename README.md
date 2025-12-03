@@ -1,55 +1,89 @@
-# Nexus
+<p align="center">
+  <img src="assets/icon.png" alt="Nexus Logo" width="120" height="120">
+</p>
 
-A minimal, modern productivity desktop application built with Electron and React.
+<h1 align="center">Nexus</h1>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Electron-Latest-47848F?logo=electron" alt="Electron"></a>
+  <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-18+-61DAFB?logo=react" alt="React"></a>
+  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-Latest-646CFF?logo=vite" alt="Vite"></a>
+</p>
+<p align="center">
+  Nexus is a lightweight productivity desktop app designed to streamline your workflow.
+</p>
+
+<p align="center">
+  Manage your tasks, notes, code snippets, and RSS feeds all in one place, with a built-in timer to keep you focused.
+</p>
+
+--- 
+
+Nexus is built on [Electron](https://electronjs.org), [React](https://reactjs.org), and [Vite](https://vitejs.dev) and aims to be:
+
+- **Open Source** - Community-driven development
+- **Lightweight** - Fast and efficient performance
+- **Simple** - Clean, intuitive interface
+- **Privacy-Focused** - Your data stays on your device
 
 ## Features
 
-- **Notes** - Quick note-taking with rich text support
-- **Tasks** - Task management with scheduling
-- **Code Snippets** - Store and organize code snippets
-- **Pomodoro Timer** - Focus timer for productivity
-- **RSS Reader** - Stay updated with your favorite feeds
+**Note Taking** - Capture your thoughts and ideas with a clean, distraction-free editor
+
+**Task Management** - Organize your to-dos and track your progress effortlessly
+
+**Code Snippets** - Store and manage reusable code snippets for quick access
+
+**Timer** - Built-in Pomodoro or custom timer to boost productivity
+
+**RSS Reader** - Stay updated with your favorite feeds without leaving the app
+
+## Download
+
+Nexus is available for Linux, macOS, and Windows.
+
+**[Download the latest release](https://github.com/ajthr/nexus/releases/latest)**
 
 ## Quick Start
 
-### Install dependencies
+### Prerequisites
+
+- Node.js (v20)
+- npm
+
+### Development
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-### Run development mode
+Run development mode (Vite + Electron):
 
 ```bash
 npm run dev
 ```
 
-This will start both Vite dev server and Electron.
+### Build
 
-### Build for production
-
-```bash
-npm run build
-npm run build:electron
-```
-
-## Testing
-
-This project includes a comprehensive test suite using Jest and React Testing Library.
-
-### Running Tests
+Build for production:
 
 ```bash
-# Run all tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage report
-npm run test:coverage
+npm run dist
 ```
+
+## License
+
+Nexus is licensed under the [MIT License](LICENSE).
+
+## Acknowledgments
+
+Built with passion and these amazing technologies:
+
+- [Electron](https://electronjs.org)
+- [React](https://reactjs.org)
+- [Vite](https://vitejs.dev)
 
 ---
-
-**License**: MIT
