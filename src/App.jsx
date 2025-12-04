@@ -15,7 +15,7 @@ import { useDatabase } from './hooks/useDatabase';
 
 function App() {
   const { theme, isDark, cycleTheme } = useTheme();
-  const { colorTheme, toggleColorTheme } = useColorTheme();
+  const { colorTheme, toggleColorTheme, customColor, setCustomColor, availableThemes, setSpecificColorTheme } = useColorTheme();
   const [showRssModal, setShowRssModal] = useState(false);
   const [showRssManageModal, setShowRssManageModal] = useState(false);
   const [showNoteModal, setShowNoteModal] = useState(false);
@@ -53,7 +53,6 @@ function App() {
     window.api.onTasksUpdated(handleTasksUpdate);
 
     return () => {
-      // If you later add remove listeners, do it here
     };
   }, [refreshRss, refreshTasks]);
 
@@ -236,6 +235,10 @@ function App() {
           onThemeChange={cycleTheme}
           colorTheme={colorTheme}
           toggleColorTheme={toggleColorTheme}
+          customColor={customColor}
+          setCustomColor={setCustomColor}
+          availableThemes={availableThemes}
+          setSpecificColorTheme={setSpecificColorTheme}
           onRssClick={() => setShowRssModal(true)}
           onExport={handleExport}
           onImport={handleImport}
