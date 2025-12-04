@@ -18,14 +18,16 @@
   Manage your tasks, notes, code snippets, and RSS feeds all in one place, with a built-in timer to keep you focused.
 </p>
 
---- 
+---
 
-Nexus is built on [Electron](https://electronjs.org), [React](https://reactjs.org), and [Vite](https://vitejs.dev) and aims to be:
+## Documentation
 
-- **Open Source** - Community-driven development
-- **Lightweight** - Fast and efficient performance
-- **Simple** - Clean, intuitive interface
-- **Privacy-Focused** - Your data stays on your device
+For detailed instructions on building, installing, and packaging Nexus, please refer to the [**Documentation**](docs/Readme.md).
+
+-   [**Building and Installing**](docs/Building-and-Installing.md)
+-   [**Packaging**](docs/Packaging.md)
+-   [**List of Dependencies**](docs/List-of-dependencies.md)
+-   [**API Documentation**](docs/api.md)
 
 ## Features
 
@@ -44,35 +46,6 @@ Nexus is built on [Electron](https://electronjs.org), [React](https://reactjs.or
 Nexus is available for Linux, macOS, and Windows.
 
 **[Download the latest release](https://github.com/ajthr/nexus/releases/latest)**
-
-## Quick Start
-
-### Prerequisites
-
-- Node.js (v20)
-- npm
-
-### Development
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run development mode (Vite + Electron):
-
-```bash
-npm run dev
-```
-
-### Build
-
-Build for production:
-
-```bash
-npm run dist
-```
 
 ## License
 
