@@ -94,14 +94,14 @@ function createWindow() {
   mainWindow.setMenuBarVisibility(false)
 
   const isDev = process.env.NODE_ENV === 'development';
-  
+
   if (isDev) {
     mainWindow.loadURL('http://localhost:5173');
     mainWindow.webContents.openDevTools();
   } else {
     // FIX: Changed '../dist/index.html' to 'dist/index.html'. 
     // In ASAR, __dirname is the archive root, so we look directly into the 'dist' folder inside it.
-    mainWindow.loadFile(join(__dirname, 'dist', 'index.html')).catch(err => {
+    mainWindow.loadFile(join(__dirname, '../dist/index.html')).catch(err => {
       console.error("Failed to load production index.html:", err);
     });
   }
@@ -112,7 +112,7 @@ function createWindow() {
       responseHeaders: {
         ...details.responseHeaders,
         'Content-Security-Policy': [
-          isDev 
+          isDev
             ? "default-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:5173 ws://localhost:5173; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:5173; style-src 'self' 'unsafe-inline';"
             : "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
         ]
@@ -122,7 +122,7 @@ function createWindow() {
 
   // Start RSS feed checking
   startRssFeedChecker();
-  
+
   // Start task notification checker
   startTaskNotificationChecker();
 }
@@ -135,52 +135,52 @@ function startRssFeedChecker() {
 
 async function checkRssFeeds() {
   const feeds = db.prepare('SELECT * FROM rss_feeds WHERE active = 1').all();
-  
+
   for (const feed of feeds) {
     try {
       const parsedFeed = await rssParser.parseURL(feed.url);
-      
+
       // Update feed title if not set
       if (!feed.title) {
         db.prepare('UPDATE rss_feeds SET title = ? WHERE id = ?').run(parsedFeed.title, feed.id);
       }
-      
+
       let hasNewItems = false;
-      
+
       // Insert new items
       for (const item of parsedFeed.items) {
         const exists = db.prepare('SELECT id FROM rss_items WHERE feed_id = ? AND link = ?')
           .get(feed.id, item.link);
-        
+
         if (!exists) {
           db.prepare(`
             INSERT INTO rss_items (feed_id, title, link, pub_date, content)
             VALUES (?, ?, ?, ?, ?)
           `).run(feed.id, item.title, item.link, item.pubDate, item.contentSnippet || '');
-          
+
           hasNewItems = true;
-          
+
           // Send notification for new item
           if (Notification.isSupported()) {
             const notification = new Notification({
               title: 'New RSS Item',
               body: `${parsedFeed.title}: ${item.title}`,
             });
-            
+
             // Make notification clickable
             notification.on('click', () => {
               if (item.link) {
                 shell.openExternal(item.link);
               }
             });
-            
+
             notification.show();
           }
         }
       }
-      
+
       db.prepare('UPDATE rss_feeds SET last_fetched = CURRENT_TIMESTAMP WHERE id = ?').run(feed.id);
-      
+
       // Only notify renderer if there are new items
       if (hasNewItems && mainWindow) {
         mainWindow.webContents.send('rss-updated');
@@ -201,7 +201,7 @@ function startTaskNotificationChecker() {
       AND completed = 0 
       AND notified = 0
     `).all(now);
-    
+
     tasks.forEach(task => {
       if (Notification.isSupported()) {
         const notification = new Notification({
@@ -210,10 +210,10 @@ function startTaskNotificationChecker() {
         });
         notification.show();
       }
-      
+
       db.prepare('UPDATE tasks SET notified = 1 WHERE id = ?').run(task.id);
     });
-    
+
     if (tasks.length > 0 && mainWindow) {
       mainWindow.webContents.send('tasks-updated');
     }
@@ -294,18 +294,18 @@ ipcMain.handle('get-rss-feeds', () => {
 
 ipcMain.handle('get-rss-items', (event, { feedId, readLater }) => {
   let query = 'SELECT ri.*, rf.title as feed_title FROM rss_items ri JOIN rss_feeds rf ON ri.feed_id = rf.id';
-  
+
   if (feedId) {
     query += ` WHERE ri.feed_id = ${feedId}`;
   }
-  
+
   if (readLater) {
     query += feedId ? ' AND' : ' WHERE';
     query += ' ri.read_later = 1';
   }
-  
+
   query += ' ORDER BY ri.pub_date DESC LIMIT 50';
-  
+
   return db.prepare(query).all();
 });
 
@@ -369,7 +369,7 @@ ipcMain.handle('export-data', () => {
 ipcMain.handle('import-data', (event, data) => {
   try {
     db.exec('BEGIN TRANSACTION');
-    
+
     // Clear existing data
     db.exec(`
       DELETE FROM notes;
@@ -378,32 +378,32 @@ ipcMain.handle('import-data', (event, data) => {
       DELETE FROM rss_feeds;
       DELETE FROM grid_layout;
     `);
-    
+
     // Import notes
     const insertNote = db.prepare('INSERT INTO notes (title, content, created_at) VALUES (?, ?, ?)');
     data.notes?.forEach(note => insertNote.run(note.title, note.content, note.created_at));
-    
+
     // Import tasks
     const insertTask = db.prepare('INSERT INTO tasks (title, scheduled_at, completed) VALUES (?, ?, ?)');
     data.tasks?.forEach(task => insertTask.run(task.title, task.scheduled_at, task.completed));
-    
+
     // Import snippets
     const insertSnippet = db.prepare('INSERT INTO snippets (title, content, language) VALUES (?, ?, ?)');
     data.snippets?.forEach(snippet => insertSnippet.run(snippet.title, snippet.content, snippet.language));
-    
+
     // Import RSS feeds
     const insertFeed = db.prepare('INSERT INTO rss_feeds (url, title) VALUES (?, ?)');
     data.rssFeeds?.forEach(feed => insertFeed.run(feed.url, feed.title));
-    
+
     // Import grid layout
     const insertLayout = db.prepare('INSERT INTO grid_layout (position, section_type) VALUES (?, ?)');
     data.gridLayout?.forEach(item => insertLayout.run(item.position, item.section_type));
-    
+
     // Import settings
     if (data.settings?.theme) {
       store.set('theme', data.settings.theme);
     }
-    
+
     db.exec('COMMIT');
     return { success: true };
   } catch (error) {
