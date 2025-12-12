@@ -81,6 +81,7 @@
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
+      "uninstallDisplayName": "${productName}",
       "artifactName": "${productName}Setup-${version}-${arch}.${ext}"
     },
     "linux": {
