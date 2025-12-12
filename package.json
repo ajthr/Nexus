@@ -23,7 +23,10 @@
     "tasks",
     "rss"
   ],
-  "author": "Ajith",
+  "author": {
+    "name": "Ajith",
+    "email": "ajithr.dev@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
     "better-sqlite3": "^9.2.2",
@@ -38,7 +41,8 @@
     "@rollup/rollup-linux-x64-gnu": "4.53.3",
     "@rollup/rollup-linux-x64-musl": "4.53.3",
     "@rollup/rollup-darwin-x64": "4.53.3",
-    "@rollup/rollup-darwin-arm64": "4.53.3"
+    "@rollup/rollup-darwin-arm64": "4.53.3",
+    "dmg-license": "^1.0.11"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.28.5",
